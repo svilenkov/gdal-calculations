@@ -1005,7 +1005,7 @@ class WarpedDataset(Dataset):
         '''Modify the warped VRT to control pixel size and extent'''
 
         orig_gt=orig_ds.GetGeoTransform()
-        orig_invgt=gdal.InvGeoTransform(orig_gt)[1]
+        orig_invgt=gdal.InvGeoTransform(orig_gt)
         orig_cols = orig_ds.RasterXSize
         orig_rows = orig_ds.RasterYSize
         orig_ext=geometry.GeoTransformToExtent(orig_gt,orig_cols,orig_rows)
@@ -1040,7 +1040,7 @@ class WarpedDataset(Dataset):
         new_cols = round((new_ext[2]-new_ext[0])/new_px)
         new_rows = round((new_ext[3]-new_ext[1])/new_py)
         new_gt=(new_ext[0],new_px,0,new_ext[3],0,-new_py)
-        new_invgt=gdal.InvGeoTransform(new_gt)[1]
+        new_invgt=gdal.InvGeoTransform(new_gt)
 
         #Read XML from vsimem, requires gdal VSIF*
         vrtxml = self.__read_vsimem__(self._warped_fn)
