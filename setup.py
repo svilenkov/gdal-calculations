@@ -25,12 +25,7 @@ CLASSIFIERS = [ 'Operating System :: OS Independent',
                 'License :: OSI Approved :: MIT License',
                 'Topic :: Scientific/Engineering :: GIS']
 
-REQUIRED = ['GDAL >= 1.7, < 2.0','numpy >= 1.7']
-
-if 'install' in sys.argv:
-    for module in REQUIRED:
-        try:__import__(module)
-        except ImportError:raise ImportError('%s is required.'%module)
+REQUIRED = ['gdal == 2.3.1','numpy >= 1.15']
 
 setupargs = {
     'name':'gdal_calculations',
